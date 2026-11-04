@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <style>:root{color-scheme:light}html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Did Hughes Sign?</title>
+<!-- share-meta:start (scripts/update.mjs rewrites the image and description lines when the answer changes) -->
+<meta name="description" content="Quinn Hughes is still unsigned. His Wild contract expires after 2026&#8211;27. Live countdown to free agency on July 1, 2027.">
+<link rel="canonical" href="https://didquinnhughessign.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Did Hughes Sign?">
+<meta property="og:title" content="Did Quinn Hughes sign with the Wild?">
+<meta property="og:description" content="Quinn Hughes is still unsigned. His Wild contract expires after 2026&#8211;27. Live countdown to free agency on July 1, 2027.">
+<meta property="og:url" content="https://didquinnhughessign.com/">
+<meta property="og:image" content="https://didquinnhughessign.com/assets/og-no.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NO. Quinn Hughes is still unsigned with the Minnesota Wild.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Did Quinn Hughes sign with the Wild?">
+<meta name="twitter:description" content="Quinn Hughes is still unsigned. His Wild contract expires after 2026&#8211;27. Live countdown to free agency on July 1, 2027.">
+<meta name="twitter:image" content="https://didquinnhughessign.com/assets/og-no.png">
+<meta name="theme-color" content="#0c1b14">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- share-meta:end -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: one centered column. Giant YES/NO answer first, live countdown to free agency second, facts and reports below. */
@@ -82,6 +103,14 @@ ol.log a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; 
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; display: flex; flex-direction: column; gap: 8px; }
 footer p { margin: 0; max-width: 60em; }
 
+.share { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.share .label { width: 100%; }
+.share a, .share button {
+  font: 500 14px/1 var(--f-body); color: var(--fg); background: transparent; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 999px; padding: 10px 14px; text-decoration: none;
+}
+.share a:hover, .share button:hover { border-color: var(--fg); }
+.share a:focus-visible, .share button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .signed .answer { color: var(--accent); }
 .flag { margin: 8px 0 0; padding: 10px 12px; border-left: 3px solid var(--wheat); background: var(--panel); font-size: 14px; max-width: 40em; }
 .flag a { color: var(--fg); }
@@ -122,6 +151,16 @@ footer p { margin: 0; max-width: 60em; }
     <ol class="log" id="log"></ol>
   </section>
 
+  <section class="share" aria-label="Share">
+    <div class="label">Share</div>
+    <a id="shX" href="#" target="_blank" rel="noopener">Post on X</a>
+    <a id="shBsky" href="#" target="_blank" rel="noopener">Bluesky</a>
+    <a id="shReddit" href="#" target="_blank" rel="noopener">Reddit</a>
+    <a id="shFb" href="#" target="_blank" rel="noopener">Facebook</a>
+    <button type="button" id="shCopy">Copy link</button>
+    <a id="shImg" href="assets/square-no.png" download="did-hughes-sign.png">Save image</a>
+  </section>
+
   <footer>
     <p>The status is checked several times a day. It says YES only after an official announcement from the Wild or the NHL. Insider reports show up as a note and do not change the answer.</p>
     <p>Fan-made page. Not affiliated with the Minnesota Wild, the NHL, the NHLPA or Quinn Hughes. Hughes has not asked for a trade and has said he is open to re-signing.</p>
@@ -138,6 +177,22 @@ var el = function (id) { return document.getElementById(id); };
 var pad = function (n) { return String(n).padStart(2, "0"); };
 var timer = null;
 
+function updateShare(signed) {
+  var url = location.href.split("#")[0];
+  var text = signed ? "Quinn Hughes signed with the Wild." : "Did Quinn Hughes sign with the Wild? Not yet.";
+  var e = encodeURIComponent;
+  el("shX").href = "https://twitter.com/intent/tweet?text=" + e(text) + "&url=" + e(url);
+  el("shBsky").href = "https://bsky.app/intent/compose?text=" + e(text + " " + url);
+  el("shReddit").href = "https://www.reddit.com/submit?url=" + e(url) + "&title=" + e(text);
+  el("shFb").href = "https://www.facebook.com/sharer/sharer.php?u=" + e(url);
+  el("shImg").href = "assets/square-" + (signed ? "yes" : "no") + ".png";
+}
+el("shCopy").addEventListener("click", function () {
+  var btn = this, url = location.href.split("#")[0];
+  var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy link"; }, 1800); };
+  try { navigator.clipboard.writeText(url).then(done, function () { window.prompt && done(); }); } catch (err) { done(); }
+});
+
 function tick() {
   var ms = Math.max(0, UFA - Date.now());
   var t = Math.floor(ms / 1000);
@@ -149,6 +204,7 @@ function tick() {
 }
 
 function apply(st) {
+  updateShare(!!st.signed);
   var root = el("root");
   el("asof").textContent = st.asOf ? "Last checked " + st.asOf : "";
   var flag = el("flag");

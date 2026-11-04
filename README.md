@@ -32,6 +32,14 @@ Edit `manual.json` and commit it. It always wins.
 
 Use `"signed": false` to force NO, or `null` to go back to automatic. `"blockedUrls": ["https://..."]` hides specific news items.
 
+## Social sharing
+
+- `assets/og-no.png` and `og-yes.png` (1200x630) are the link previews for X, Bluesky, Facebook, iMessage and Slack. `square-no.png` and `square-yes.png` (1080x1080) are for posting directly.
+- The page has share buttons (X, Bluesky, Reddit, Facebook, copy link) and a "Save image" link.
+- When the update script detects a signing, it also switches `og:image` and the descriptions in `index.html` to the YES versions, so new link previews match the answer. Platforms cache previews, so an old link can keep showing the old image for a while. Use the Facebook Sharing Debugger or the X card validator to refresh.
+- The canonical link, `og:url`, `og:image` and `twitter:image` use `https://didquinnhughessign.com`. Preview images need that full address. If the domain changes, replace it across `index.html`.
+- Icons: `favicon.ico`, `assets/icon-192.png`, `assets/icon-512.png` and `assets/apple-touch-icon.png` show a "QH" mark.
+
 ## Notes
 
 - Google News links are redirect links. They open the original article.

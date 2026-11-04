@@ -15,6 +15,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const STATUS_PATH = path.join(ROOT, "status.json");
 const MANUAL_PATH = path.join(ROOT, "manual.json");
+const INDEX_PATH = path.join(ROOT, "index.html");
 
 const QUERIES = [
   '"Quinn Hughes" Wild contract extension',
@@ -130,6 +131,28 @@ async function loadItems() {
   return all;
 }
 
+
+// Keep the social preview (image and description) in step with the answer. Crawlers do not run JavaScript,
+// so this has to be written into index.html itself.
+function syncShareMeta(signed) {
+  let html;
+  try { html = fs.readFileSync(INDEX_PATH, "utf8"); } catch { return false; }
+  const desc = signed
+    ? "Quinn Hughes signed with the Minnesota Wild."
+    : "Quinn Hughes is still unsigned. His Wild contract expires after 2026&#8211;27. Live countdown to free agency on July 1, 2027.";
+  const alt = signed ? "YES. Quinn Hughes signed with the Minnesota Wild." : "NO. Quinn Hughes is still unsigned with the Minnesota Wild.";
+  const img = signed ? "og-yes.png" : "og-no.png";
+  let out = html
+    .replace(/(<meta name="description" content=")[^"]*(")/, `$1${desc}$2`)
+    .replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${desc}$2`)
+    .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${desc}$2`)
+    .replace(/(<meta property="og:image:alt" content=")[^"]*(")/, `$1${alt}$2`)
+    .replace(/(<meta (?:property="og:image"|name="twitter:image") content="[^"]*\/assets\/)og-(?:yes|no)\.png(")/g, `$1${img}$2`);
+  if (out === html) return false;
+  fs.writeFileSync(INDEX_PATH, out);
+  return true;
+}
+
 // ---------- main ----------
 const read = (p, fallback) => { try { return JSON.parse(fs.readFileSync(p, "utf8")); } catch { return fallback; } };
 const status = read(STATUS_PATH, { signed: false, asOf: "", summary: "", flag: "", flagUrl: "", reports: [] });
@@ -172,6 +195,9 @@ next.reports = next.reports
 
 // Date only, so the file changes (and the site redeploys) at most once a day unless something real changes.
 next.asOf = asOfString(now);
+
+const metaChanged = syncShareMeta(next.signed === true);
+if (metaChanged) console.log("index.html share meta updated");
 
 const after = JSON.stringify(next);
 if (after !== before) {
