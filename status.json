@@ -5,10 +5,53 @@
   "flag": "",
   "flagUrl": "",
   "reports": [
-    { "date": "2026-09-10", "text": "Waiting looks smart after Cale Makar raised the bar for top defensemen.", "source": "Daily Faceoff", "url": "https://www.dailyfaceoff.com/news/quinn-hughes-next-contract-extension-minnesota-wild-not-worried-jack-luke-trade-tkachuk" },
-    { "date": "2026-09-09", "text": "Hughes said he will take his time and is not backed up against a wall.", "source": "Icehockeyman", "url": "https://icehockeyman.com/2026/09/10/quinn-hughes-in-no-rush-to-sign-extension-with-wild/" },
-    { "date": "2026-09-01", "text": "Guerin said the Wild are confident Hughes will sign a new deal.", "source": "Icehockeyman", "url": "https://icehockeyman.com/2026/09/01/guerin-confident-hughes-will-sign-new-wild-deal/" },
-    { "date": "2026-07-28", "text": "GM Bill Guerin set to meet Hughes and his camp about an extension.", "source": "NHL.com", "url": "https://www.nhl.com/news/quinn-hughes-minnesota-wild-to-talk-contract-this-week-report" },
-    { "date": "2026-06-25", "text": "Wild owner Craig Leipold said the team is going to re-sign him.", "source": "Daily Faceoff", "url": "https://www.dailyfaceoff.com/news/we-are-going-to-re-sign-him-minnesota-wild-owner-confident-quinn-hughes-will-stay-nhl-contract" }
+    {
+      "date": "2026-10-29",
+      "text": "Quinn Hughes Trade Pitch Sees Devils Land Superstar From Wild",
+      "source": "Yahoo Sports",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPTzlZSFRFU3B2dVNYZGRXTkZhSEZlZklkeTR4WW9SME81OE02Ui1OYkVIa0xXdXhwVTd2X2cwMXRMcnd4Y1RwZmwtV3RrRzZWSjBvZ3g1aHBzRnppRVE3bHMzbEQyYUowb3lRa0M0YTJnVWxJcXJmSmRnWml4MVN3UzNDTV8?oc=5"
+    },
+    {
+      "date": "2026-10-28",
+      "text": "MN Wild, Quinn Hughes Haven’t Talked Contract in “a Long Time”",
+      "source": "Yahoo Sports",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPRllFMVhQTzFVdGhvOGtGZVJHZ0gxOHRicDhaaXUwWUlBdm92c3A5UWRfOXAtWjdtcTZPVE1EeDRwbnk4cVJ5TWZQUzRfM2xscFZYLXFqX2pjWlhJTkdTZ1VpMXpfclp5LXlRTTNTSnNMUnNpbmVqZFQtN2xIZHpONA?oc=5"
+    },
+    {
+      "date": "2026-10-28",
+      "text": "Quinn Hughes-Devils Speculation Takes Turn Amid Pending Minnesota Wild Extension",
+      "source": "Yahoo Sports",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNZ1p0aTk0WFA0dHRtQVZZcDUxR2FqUGxrYjRCa2lsOURETkgzMzBzSDBuTlJjTlJLeXVEUFlIZ2c1SDVBY09KdkVxNnAxY1V6MGZLenJjdGNoMjBGcE90Q24yNGVkZUNCR3lyYXBReEJCQ2QyVlFLODV5VmZpRDNCWHNUelFYdi14VGtSVE1DRQ?oc=5"
+    },
+    {
+      "date": "2026-10-24",
+      "text": "New Quinn Hughes contract could come soon: ‘My two feet are planted here in Minnesota’",
+      "source": "Star Tribune",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNU3AyZC1yeV9PcEJsdk03VlZYWnR5eXJPOTRwTzcxZUJtaWxzVXY2bUE2REdVcXFtQTdDUUhZalZnLUt5aldsMmJIbHNtRlI4MUg0MXZvSXBtN2ZiTXJkb1RscWRCVmo4dlRSZVJzRWR5LVMzZUQweE5waTFUdXNKT0JIWmdsMjYwM2lLbXBVNHBNZGpKZ1IwQUdDMzZaeGhVcHBuVElGdE9wNDN2N1FTeE5ncXhXaHl0cU92dUt0a2t4TTQtRW5veF9JTmJwbXNOZW44?oc=5"
+    },
+    {
+      "date": "2026-10-24",
+      "text": "Wild contract extension saga with Quinn Hughes could be nearing an end",
+      "source": "Yahoo Sports",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQWTFNVTJxTWQ5WThGQ2VNeUI0Vzh2Wm90cjJiTnpybkw0MXNTWE5DR2hoVWp5bVdyTzdyU0FwNzl0dDJvY0tOVzVud1ltVkwtNTQtZktoaVRPNmlwN2k2TUwtakRZbjZRSXB2Q2ZudmJ5YXFOX3pDazBoOHR0QjBSdkw2NEJHaDlUUGs0?oc=5"
+    },
+    {
+      "date": "2026-10-24",
+      "text": "Quinn Hughes Hints at Progress in Contract Talks with Wild",
+      "source": "Yahoo Sports",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOaUZwVWhrR05PUDFiM0tSbDZhckZLUVQ2UVFHWkxad3RraUhzMGhBZmVpMHNQX1Q3M3pDdlBXREgwX3REeDRtQUxLX18wQUlQLTB3TnVMSXo0WE9tLUxKQ0RNYXE5SUt6Z1hzSGtQLTBPWk1BTFV0NEMwVVY3aUp3TUdxZGlILVNxdUZaU3F3?oc=5"
+    },
+    {
+      "date": "2026-10-23",
+      "text": "Wild’s Quinn Hughes Trade Arrow Points One Direction After Connor Hellebuyck Trade",
+      "source": "Yahoo Sports",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNbVAzMFl1UUVKLXA5SVJNTDJVQkpXWnVzY0Uwa19rS19yQ0JfMFZjODJBZEY4d19zRjljNFdBX2ZhTC13WU9RLTFmUWtra04xODBvbi1jc0RmdVRPNUxjenlxcFJYaVJld1BsdGpFV2pMaE42bURKaktUQThuNklIV2ladlM?oc=5"
+    },
+    {
+      "date": "2026-10-16",
+      "text": "If Wild Land 30-Goal Scorer, Quinn Hughes “Signs the Next Day”",
+      "source": "Yahoo Sports",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFB3ZDlWVGttTjRvSndHRlZWVjdabVhiYk1IX1cxMHFCLUNtMUczb1VITzRFNnpkMm5POXBjdFNNV3FvVk9FcVFJd2JGaWtLSHBOWWtxVzc4MjlDcmtLTk9xLUI3djhVR2JwWW1ZYVF5V3RQUHJFUkJ2Z2NxQkljZw?oc=5"
+    }
   ]
 }
