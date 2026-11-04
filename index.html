@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light}html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Did Hughes Sign?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one centered column. Giant YES/NO answer first, live countdown to free agency second, facts and reports below. */
+:root {
+  --bg: #f3f5f2;
+  --fg: #11261d;
+  --muted: #5a6b62;
+  --rule: #cfd8d2;
+  --answer: #154734;
+  --accent: #a6192e;
+  --wheat: #8a6400;
+  --panel: #e6ece8;
+  --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1b14; --fg: #e9efe9; --muted: #93a79b; --rule: #25392e;
+    --answer: #eaaa00; --accent: #ff5a6e; --wheat: #eaaa00; --panel: #12271d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1b14; --fg: #e9efe9; --muted: #93a79b; --rule: #25392e;
+  --answer: #eaaa00; --accent: #ff5a6e; --wheat: #eaaa00; --panel: #12271d;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.55;
+  padding-block: 28px 40px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+main { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+.label {
+  font-family: var(--f-data); font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
+}
+h1 { margin: 0; font-weight: 500; font-size: 17px; font-family: var(--f-body); text-wrap: balance; }
+.answer-block { display: flex; flex-direction: column; gap: 6px; }
+.answer-block .answer { margin-top: 22px; margin-bottom: 14px; }
+.answer {
+  font-family: var(--f-display); font-weight: 900; line-height: .82;
+  font-size: clamp(150px, 42vw, 300px); letter-spacing: -.01em;
+  color: var(--answer); margin: 0;
+}
+.sub { font-size: 18px; color: var(--fg); max-width: 34em; text-wrap: balance; }
+.asof { font-family: var(--f-data); font-size: 12px; color: var(--muted); }
+
+.count { border-top: 2px solid var(--fg); padding-top: 16px; display: flex; flex-direction: column; gap: 14px; }
+.clock { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.unit { background: var(--panel); padding: 14px 8px 10px; text-align: center; border-radius: 4px; }
+.unit b {
+  display: block; font-family: var(--f-display); font-weight: 900;
+  font-size: clamp(44px, 13vw, 92px); line-height: 1; font-variant-numeric: tabular-nums;
+}
+.unit span { font-family: var(--f-data); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.count p { margin: 0; font-size: 14px; color: var(--muted); }
+
+dl.facts { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px 24px; }
+dl.facts div { border-top: 1px solid var(--rule); padding-top: 10px; min-width: 0; }
+dt { font-family: var(--f-data); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+dd { margin: 4px 0 0; font-family: var(--f-display); font-weight: 800; font-size: 30px; line-height: 1.05; }
+dd small { display: block; font-family: var(--f-body); font-weight: 400; font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+ol.log { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; }
+ol.log li { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 14px; padding: 12px 0; border-top: 1px solid var(--rule); }
+ol.log time { font-family: var(--f-data); font-size: 12px; color: var(--muted); padding-top: 3px; }
+ol.log a { color: var(--fg); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+ol.log a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+footer p { margin: 0; max-width: 60em; }
+
+.signed .answer { color: var(--accent); }
+.flag { margin: 8px 0 0; padding: 10px 12px; border-left: 3px solid var(--wheat); background: var(--panel); font-size: 14px; max-width: 40em; }
+.flag a { color: var(--fg); }
+@media (max-width: 420px) { ol.log li { grid-template-columns: 1fr; gap: 2px; } }
+@media (prefers-reduced-motion: no-preference) { .unit b { transition: opacity .15s; } }
+</style>
+
+</head>
+<body>
+<main id="root">
+  <header class="answer-block">
+    <h1 class="label" style="font-weight:400">Did Quinn Hughes sign a contract extension with the Minnesota Wild?</h1>
+    <p class="answer" id="answer" aria-live="polite">NO</p>
+    <p class="sub" id="sub">Still unsigned. His current deal expires after the 2026&ndash;27 season.</p>
+    <p class="asof" id="asof"></p>
+    <p class="flag" id="flag" hidden></p>
+  </header>
+
+  <section class="count" id="countSection" aria-label="Countdown to free agency">
+    <div class="label" id="countLabel">Countdown to free agency</div>
+    <div class="clock" role="timer">
+      <div class="unit"><b id="d">--</b><span>days</span></div>
+      <div class="unit"><b id="h">--</b><span>hours</span></div>
+      <div class="unit"><b id="m">--</b><span>min</span></div>
+      <div class="unit"><b id="s">--</b><span>sec</span></div>
+    </div>
+    <p>Counts down to noon ET on July 1, 2027, when NHL free agency normally opens. If he signs, the countdown goes away.</p>
+  </section>
+
+  <dl class="facts">
+    <div><dt>Current cap hit</dt><dd>$7.85M<small>Six-year deal signed with Vancouver in 2021</small></dd></div>
+    <div><dt>Eligible to extend</dt><dd id="since">July 1, 2026<small id="sinceNote"></small></dd></div>
+    <div><dt>Max term (new CBA)</dt><dd>7 years<small>Reported limit once the new CBA took effect Sept. 16</small></dd></div>
+  </dl>
+
+  <section>
+    <div class="label">Latest news</div>
+    <ol class="log" id="log"></ol>
+  </section>
+
+  <footer>
+    <p>The status is checked several times a day. It says YES only after an official announcement from the Wild or the NHL. Insider reports show up as a note and do not change the answer.</p>
+    <p>Fan-made page. Not affiliated with the Minnesota Wild, the NHL, the NHLPA or Quinn Hughes. Hughes has not asked for a trade and has said he is open to re-signing.</p>
+  </footer>
+</main>
+
+<script>
+/* Fallback shown if status.json cannot load. Live status comes from status.json, rewritten by scripts/update.mjs. */
+var DEFAULT_STATUS = { signed: false, asOf: "Nov. 4, 2026", summary: "", flag: "", flagUrl: "" };
+
+var UFA = Date.UTC(2027, 6, 1, 16, 0, 0);      // July 1, 2027, 12:00 ET (EDT = UTC-4)
+var ELIGIBLE = Date.UTC(2026, 6, 1, 4, 0, 0);  // July 1, 2026, 00:00 ET
+var el = function (id) { return document.getElementById(id); };
+var pad = function (n) { return String(n).padStart(2, "0"); };
+var timer = null;
+
+function tick() {
+  var ms = Math.max(0, UFA - Date.now());
+  var t = Math.floor(ms / 1000);
+  el("d").textContent = Math.floor(t / 86400);
+  el("h").textContent = pad(Math.floor(t % 86400 / 3600));
+  el("m").textContent = pad(Math.floor(t % 3600 / 60));
+  el("s").textContent = pad(t % 60);
+  if (ms === 0) el("countLabel").textContent = "Free agency has opened";
+}
+
+function apply(st) {
+  var root = el("root");
+  el("asof").textContent = st.asOf ? "Last checked " + st.asOf : "";
+  var flag = el("flag");
+  flag.textContent = "";
+  if (!st.signed && st.flag) {
+    flag.appendChild(document.createTextNode(st.flag + " "));
+    if (st.flagUrl && /^https:\/\//.test(st.flagUrl)) {
+      var a = document.createElement("a"); a.href = st.flagUrl; a.textContent = "Source"; a.rel = "noopener";
+      flag.appendChild(a);
+    }
+    flag.hidden = false;
+  } else { flag.hidden = true; }
+
+  if (st.signed) {
+    root.classList.add("signed");
+    el("answer").textContent = "YES";
+    el("sub").textContent = st.summary || "He signed.";
+    el("countSection").hidden = true;
+    el("sinceNote").textContent = "";
+    if (timer) { clearInterval(timer); timer = null; }
+  } else {
+    root.classList.remove("signed");
+    el("answer").textContent = "NO";
+    el("sub").textContent = "Still unsigned. His current deal expires after the 2026\u201327 season.";
+    el("countSection").hidden = false;
+    var daysSince = Math.floor((Date.now() - ELIGIBLE) / 86400000);
+    el("sinceNote").textContent = daysSince > 0 ? daysSince + " days ago, and still unsigned" : "";
+    tick();
+    if (!timer) timer = setInterval(tick, 1000);
+  }
+}
+
+var current = DEFAULT_STATUS;
+// Preview the signed state without editing: open the page with #preview-yes
+try { if (location.hash === "#preview-yes") current = { signed: true, asOf: "preview", summary: "Preview of the signed state." }; } catch (e) {}
+apply(current);
+
+
+/* ---- News list: fallback items, replaced by reports in status.json ---- */
+var FALLBACK_REPORTS = [
+  { date: "2026-09-10", text: "Waiting looks smart after Cale Makar raised the bar for top defensemen.", source: "Daily Faceoff", url: "https://www.dailyfaceoff.com/news/quinn-hughes-next-contract-extension-minnesota-wild-not-worried-jack-luke-trade-tkachuk" },
+  { date: "2026-09-09", text: "Hughes said he will take his time and is not backed up against a wall.", source: "Icehockeyman", url: "https://icehockeyman.com/2026/09/10/quinn-hughes-in-no-rush-to-sign-extension-with-wild/" },
+  { date: "2026-07-28", text: "GM Bill Guerin set to meet Hughes and his camp about an extension.", source: "NHL.com", url: "https://www.nhl.com/news/quinn-hughes-minnesota-wild-to-talk-contract-this-week-report" },
+  { date: "2026-06-25", text: "Wild owner Craig Leipold said the team is going to re-sign him.", source: "Daily Faceoff", url: "https://www.dailyfaceoff.com/news/we-are-going-to-re-sign-him-minnesota-wild-owner-confident-quinn-hughes-will-stay-nhl-contract" }
+];
+var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function renderReports(items) {
+  var ol = el("log");
+  ol.textContent = "";
+  var list = items.filter(function (i) {
+    return i && typeof i.text === "string" && /^\d{4}-\d{2}-\d{2}$/.test(i.date || "");
+  }).sort(function (a, b) { return a.date < b.date ? 1 : -1; }).slice(0, 8);
+  list.forEach(function (i) {
+    var li = document.createElement("li");
+    var t = document.createElement("time");
+    t.setAttribute("datetime", i.date);
+    var d = new Date(i.date + "T12:00:00Z");
+    t.textContent = MONTHS[d.getUTCMonth()] + " " + d.getUTCDate();
+    var span = document.createElement("span");
+    span.appendChild(document.createTextNode(i.text + " "));
+    if (i.url && /^https:\/\//.test(i.url)) {
+      var a = document.createElement("a");
+      a.href = i.url; a.rel = "noopener"; a.textContent = i.source || "Source";
+      span.appendChild(a);
+    }
+    li.appendChild(t); li.appendChild(span); ol.appendChild(li);
+  });
+}
+renderReports(FALLBACK_REPORTS);
+
+// Live status and news from status.json (rewritten by the update script).
+fetch("status.json?t=" + Date.now(), { cache: "no-store" })
+  .then(function (r) { return r.ok ? r.json() : null; })
+  .then(function (d) {
+    if (!d) return;
+    try { if (location.hash === "#preview-yes") return; } catch (e) {}
+    apply({
+      signed: d.signed === true,
+      asOf: typeof d.asOf === "string" ? d.asOf : DEFAULT_STATUS.asOf,
+      summary: typeof d.summary === "string" ? d.summary : "",
+      flag: typeof d.flag === "string" ? d.flag : "",
+      flagUrl: typeof d.flagUrl === "string" ? d.flagUrl : ""
+    });
+    if (Array.isArray(d.reports) && d.reports.length) renderReports(d.reports);
+  })
+  .catch(function () {});
+</script>
+</body>
+</html>
